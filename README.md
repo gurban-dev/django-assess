@@ -68,7 +68,7 @@ Open a new terminal while python manage.py runserver is running and run the foll
 python manage.py test
 ```
 
-This runs the automated tests for the project. The demonstration tests should pass, while assessment tests may fail until the student implements the required functionality.
+This runs the automated tests for the project. The demonstration tests should pass, while assessment tests may fail until the required functionality is implemented.
 
 ## 2. Demonstration
 
