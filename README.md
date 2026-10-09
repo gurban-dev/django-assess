@@ -62,6 +62,8 @@ The development server will be available at `http://127.0.0.1:8000/`.
 
 ### Step 5: Run Tests
 
+Open a new terminal while python manage.py runserver is running and run the following:
+
 ```bash
 python manage.py test
 ```
@@ -96,8 +98,20 @@ The main files used in the demonstration are:
 - `tasks/serializers.py`: Defines the `TaskSerializer` using `ModelSerializer`.
 - `tasks/views.py`: Implements the list/create API view using `APIView`.
 - `tasks/urls.py`: Defines the task API routes.
-- `django_assessment/urls.py`: Includes the task routes in the project URL configuration.
+- `config/urls.py`: Includes the task routes in the project URL configuration.
 - `tasks/tests.py`: Contains automated tests.
+
+### Routes
+
+These routes are currently registered by the project:
+
+| Method | URL | Purpose |
+|---|---|---|
+| GET | `/api/tasks/` | List all tasks; open this URL in a browser to view the DRF browsable API. |
+| POST | `/api/tasks/` | Create a task by sending JSON to the API. |
+| GET, POST | `/admin/` | Django's admin site (sign in with a superuser account). |
+
+The individual-task routes `GET`, `PATCH`, and `DELETE /api/tasks/<id>/` are assessment requirements and have not been added yet.
 
 ### Concepts Covered
 
