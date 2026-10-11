@@ -106,3 +106,31 @@ For a request to `GET /api/tasks/1/`, Django captures `1` and passes it to the m
 The view uses this value to look up the task. If the task does not exist, the API can return `404 Not Found`.
 
 **Important:** The parameter name in the URL pattern must match the parameter expected by the view. For example, `<int:pk>` passes `pk`, while `<int:task_id>` passes `task_id`.
+
+## How does a class-based view know which method to call for GET and POST requests?
+
+Django REST Framework's `APIView` handles this through **HTTP method dispatching**.
+
+When a client sends a request to an API, Django routes the URL to the appropriate view. DRF then examines the HTTP method and calls the corresponding method on the class.
+
+Unlike a function-based view, you do not need to write an `if` statement to check whether the request is GET or POST.
+
+The method names `get()` and `post()` have special meaning to `APIView`.
+
+## How do you retrieve a particular Task object?
+
+Django's ORM provides the `get()` method to retrieve a single object matching specified criteria.
+
+```python
+task = Task.objects.get(pk=task_id)
+```
+
+Django's ORM (Object-Relational Mapper) is a built-in tool that lets you interact with your database using Python code instead of writing raw SQL queries.
+
+- `Task` is the model representing tasks.
+- `objects` is the bridge connecting your Python code directly to your database table.
+- `get()` retrieves a single object matching the specified criteria.
+- `pk` refers to the object's primary key.
+- `task_id` is the ID of the task you want to retrieve.
+
+If no matching task exists, Django raises a `Task.DoesNotExist` exception. You can handle this exception to prevent an unhandled error and return an appropriate HTTP response, such as `404 Not Found`.
