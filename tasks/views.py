@@ -27,6 +27,9 @@ class TaskListCreateView(APIView):
     def get(self, request):
         tasks = Task.objects.all()
 
+        # The keyword argument many=True tells the serializer that it is
+        # processing a collection of objects rather than a single instance
+        # of the model class.
         serializer = TaskSerializer(tasks, many=True)
 
         return Response(serializer.data)
@@ -39,7 +42,6 @@ class TaskListCreateView(APIView):
 
     # The error that must be caught:
     # Task.DoesNotExist
-    
 
     def post(self, request):
         serializer = TaskSerializer(data=request.data)
