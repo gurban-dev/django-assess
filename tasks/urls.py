@@ -9,4 +9,5 @@ urlpatterns = [
     path("", TaskListCreateView.as_view(), name="task-list-create"),
 
     # Assessment: add the individual-task route here.
+    
 ]

@@ -34,15 +34,6 @@ class TaskListCreateView(APIView):
 
         return Response(serializer.data)
 
-    # Add a method here that handles a request from the client that
-    # seeks to get one individual task.
-
-    # Take into account the program should not stop running if the
-    # user passes an ID for a task that does not exist.
-
-    # The error that must be caught:
-    # Task.DoesNotExist
-
     def post(self, request):
         serializer = TaskSerializer(data=request.data)
 
@@ -52,3 +43,12 @@ class TaskListCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Add a method below that handles a request from the client that
+# seeks to get one individual task.
+
+# Take into account the program should not stop running if the
+# user passes an ID for a task that does not exist.
+
+# The error that must be caught:
+# Task.DoesNotExist
